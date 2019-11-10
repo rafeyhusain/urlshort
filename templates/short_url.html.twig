@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div>
+          <h2>Shortened URL</h2>
+          <ul>
+              {% for url in urls %}
+                  <li>
+                      <div>[{{ url.getId() }}] <i><a target="_blank" href="{{ base_url }}/{{ url.getShortenedUrl() }}">{{ base_url }}/{{ url.getShortenedUrl() }}</a></i>
+                      <button type="button" class="copyToClipboard">Copy</button></div>
+                      <div><a target="_blank" href="{{ url.getOriginalUrl() }}">{{ url.getOriginalUrl() }}</a>
+                      </div>
+                  </li>
+              {% endfor %}
+          </ul>
+
+    </div>
+{% endblock %}

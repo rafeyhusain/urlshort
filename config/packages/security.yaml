@@ -1,0 +1,28 @@
+security:
+    encoders:
+        App\Entity\User: bcrypt
+    providers:
+        our_db_provider:
+            entity:
+                class: App\Entity\User
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            pattern:    ^/
+            provider: our_db_provider
+            form_login:
+                login_path: login
+                check_path: login
+            logout:
+                path:   /logout
+                target: /login
+
+    access_control:
+         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         - { path: ^/account, roles: ROLE_USER }
+
+#         - { path: ^/admin, roles: ROLE_ADMIN }
+#         - { path: ^/profile, roles: ROLE_USER }

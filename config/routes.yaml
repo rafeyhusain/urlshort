@@ -1,0 +1,3 @@
+short_url_redirect:
+    path: /{shortenedUrl}
+    controller: App\Controller\ShortUrlRedirectController::redirectTo
